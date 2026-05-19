@@ -311,7 +311,6 @@
       font-size: 14px;
       color: var(--text-muted);
       padding-top: 16px;
-      border-top: 1px solid #e4e6ec;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -555,6 +554,8 @@
         text-align: center;
         justify-content: center;
       }
+
+      .earned-badge { align-self: center; }
 
       /* Summary hero stacks vertically */
       .summary-hero { flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -1067,7 +1068,7 @@ function initSummary(totalPts) {
   setTimeout(tick, 250);
 
   const badge = document.getElementById('earnedBadge');
-  document.getElementById('badgeText').textContent = totalPts + ' points collected';
+  document.getElementById('badgeText').textContent = '75 points collected';
   badge.classList.remove('show');
   setTimeout(() => badge.classList.add('show'), 200);
 
