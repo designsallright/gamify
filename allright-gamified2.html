@@ -547,7 +547,7 @@
         justify-content: center;
       }
 
-      .earned-badge { align-self: center; }
+      .earned-badge { display: flex; margin-left: auto; margin-right: auto; }
 
       /* Summary hero stacks vertically */
       .summary-hero { flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -654,7 +654,8 @@
       border: 5px solid transparent;
       border-bottom-color: rgba(0,0,0,.82);
     }
-    .tooltip-wrap:hover .tooltip-bubble { opacity: 1; }
+    .tooltip-wrap:hover .tooltip-bubble,
+    .tooltip-wrap.open .tooltip-bubble { opacity: 1; }
 
     .progress-row {
       display: flex;
@@ -1174,6 +1175,22 @@ function burst() {
   }
   setTimeout(() => { box.innerHTML=''; }, 5000);
 }
+
+/* ── Tooltip tap toggle (mobile) ── */
+document.addEventListener('click', function(e) {
+  var icon = e.target.closest('.tooltip-icon');
+  if (icon) {
+    e.stopPropagation();
+    var wrap = icon.closest('.tooltip-wrap');
+    var isOpen = wrap.classList.contains('open');
+    // Close all open tooltips first
+    document.querySelectorAll('.tooltip-wrap.open').forEach(function(w) { w.classList.remove('open'); });
+    if (!isOpen) wrap.classList.add('open');
+  } else {
+    // Tap anywhere else closes tooltips
+    document.querySelectorAll('.tooltip-wrap.open').forEach(function(w) { w.classList.remove('open'); });
+  }
+});
 </script>
 </body>
 </html>
