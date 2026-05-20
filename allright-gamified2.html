@@ -227,6 +227,7 @@
       outline: none;
       transition: border-color .2s;
     }
+    .text-input:hover { border-color: var(--blue); }
     .text-input:focus { border-color: var(--blue); }
 
     .date-row { display: flex; gap: 8px; width: 100%; }
@@ -244,6 +245,7 @@
       text-align: center;
       transition: border-color .2s;
     }
+    .date-input:hover { border-color: var(--blue); }
     .date-input:focus { border-color: var(--blue); }
     .date-input::placeholder { color: rgba(0,0,0,.3); font-size: 13px; }
 
@@ -430,7 +432,7 @@
     .gauge-svg { width: 168px; height: 168px; transform: rotate(-90deg); }
     .gauge-track { fill: none; stroke: #dce3f7; stroke-width: 13; }
     .gauge-fill {
-      fill: none; stroke: var(--blue); stroke-width: 13; stroke-linecap: round;
+      fill: none; stroke: #005EFF; stroke-width: 13; stroke-linecap: round;
       stroke-dasharray: 408; stroke-dashoffset: 408;
       transition: stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);
     }
@@ -441,7 +443,7 @@
     }
     .gauge-pct {
       font-family: "Ubuntu", sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1;
+      font-size: 36px; font-weight: 700; color: #005EFF; line-height: 1;
     }
     .gauge-sub { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-top: 3px; }
 
@@ -460,27 +462,25 @@
     }
     .boost-list { display: flex; flex-direction: column; gap: 10px; }
     .boost-item {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 16px;
       background: #fff;
-      border: 1.5px solid #dce3f7;
       border-left: 4px solid var(--blue);
-      border-radius: 8px;
     }
     .boost-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .boost-body { flex: 1; }
     .boost-body p { font-size: 14px; color: rgba(0,0,0,.82); line-height: 1.5; }
     .boost-delta {
       display: inline-block; margin-top: 4px;
-      font-size: 11px; font-weight: 700; color: var(--blue);
-      background: #dce3f7; border-radius: 20px; padding: 2px 10px;
+      font-size: 12px; font-weight: 700; color: #005EFF;
+      background: #e7eefe; border-radius: 20px; padding: 2px 10px;
     }
 
     .summary-cta {
       display: flex; align-items: center; gap: 24px;
-      background: #f0f3ff;
-      border: 1.5px solid var(--blue);
+      background: #005EFF;
       border-radius: 10px;
+      color: #fff;
       padding: 22px 24px;
       margin-bottom: 8px;
     }
@@ -490,7 +490,7 @@
       font-family: "Ubuntu", sans-serif;
       font-size: 17px; margin-bottom: 4px;
     }
-    .summary-cta-copy p { font-size: 14px; color: rgba(0,0,0,.6); line-height: 1.5; }
+    .summary-cta-copy p { font-size: 14px; color: #fff; line-height: 1.5; }
     .btn-cta {
       background: var(--green); color: rgba(0,0,0,.87);
       border: none; border-radius: 48px;
@@ -554,6 +554,8 @@
 
       /* Summary CTA stacks */
       .summary-cta { flex-direction: column; gap: 16px; }
+      .btn-cta { width: 100%; }
+      .summary-cta-copy { width: 100%; }
     }
 
     @media (max-width: 480px) {
@@ -670,6 +672,10 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
+
+    .summary-headline { font-size: 32px; }
+    .boost-heading { font-size: 24px; }
+    .summary-cta-copy strong { font-size: 24px; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
@@ -706,7 +712,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to increase your chances</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to max your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page1" style="width:3%"></div></div>
@@ -765,7 +771,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to increase your chances</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to max your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page2" style="width:25%"></div></div>
@@ -820,7 +826,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to increase your chances</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to max your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page3" style="width:50%"></div></div>
@@ -875,7 +881,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to increase your chances</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Get 75+ points to max your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page4" style="width:78%"></div></div>
@@ -898,7 +904,7 @@
             </div>
           </div>
           <div class="summary-text">
-            <h2 class="summary-headline">Your preliminary success rate: <span id="summaryPctText" style="color:var(--blue)">75%</span></h2>
+            <h2 class="summary-headline">Your preliminary success rate: <span id="summaryPctText" style="color:#005EFF">75%</span></h2>
             <p class="summary-subline">Based on your answers so far, we assess your chances of a severance payment as <strong>good</strong>. With a few more details we can sharpen this estimate.</p>
           </div>
         </div>
