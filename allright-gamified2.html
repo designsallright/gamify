@@ -6,6 +6,7 @@
   <title>Arbeitsrecht – Allright.de (Gamified Prototype)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ── RESET & BASE ─────────────────────────────────── */
@@ -452,22 +453,45 @@
       font-family: "Ubuntu", sans-serif;
       font-size: 24px; font-weight: 700; color: var(--text);
       line-height: 1.25; margin-bottom: 10px;
+      position: relative;
+      z-index: 0;
+    }
+    .summary-headline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -0.3em;
+      width: min(301px, 100%);
+      height: 72px;
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAxIiBoZWlnaHQ9IjcwIiB2aWV3Qm94PSIwIDAgMzAxIDcwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNy4yMzQzOCA2MS4yNTMzQzguOTg3MzQgNjAuOTIzMiAxMC40NzAxIDU5LjI2MTUgMTEuNzY3NCA1OC4yNzU0QzE4LjkxMjQgNTIuODQzNSAyNi40NzQ1IDQ3Ljk0NjkgMzQuMDYzNSA0My4wODc1QzQ1LjM3MzcgMzUuODQ1NSA1Ni40NDY4IDI4LjMwNDEgNjcuNzQ0OCAyMS4wNTA0QzcyLjM0NjIgMTguMDk2MiA3Ni42MDYyIDE0LjY4NDMgODEuMTg1NiAxMS43MTkzQzgyLjEzNTYgMTEuMTA0NCA4NS4yNzggOC42NDIwOSA4Ni4zNTExIDguNjQyMDlDODYuNzkwMyA4LjY0MjA5IDgyLjk4MDcgMTUuNDcwMiA4Mi43MTQ1IDE1Ljg4ODZDNzYuNjg2NSAyNS4zNDg0IDY5LjcyMjkgMzQuMjU4OSA2My42ODYzIDQzLjczMjhDNjAuNDUxNiA0OC44MDkyIDU2Ljg0MDIgNTMuNDAzNyA1My45MzQ5IDU4LjY3MjRDNTIuMzE3NSA2MS42MDU3IDQ5Ljc5NiA2Mi41MTY3IDUzLjkzNDkgNTkuNDY2NUM2MS4zODc3IDUzLjk3NDMgNzAuNzI1NyA1MC4wMTM3IDc4LjkxOTQgNDUuNjE4OUM5Mi40MTg4IDM4LjM3ODMgMTA2LjI1MyAzMS43NTU5IDExOS45MjcgMjQuODIyNUMxMjMuODc5IDIyLjgxODggMTI4LjE4NiAyMS4yMzI4IDEzMS44OTIgMTguODE2OUMxMzMuODE0IDE3LjU2NDIgMTM1LjQ3NyAxNS42OTg3IDEzMy44NDIgMTguOTE2MkMxMjcuMjUzIDMxLjg5IDExOC40NTQgNDQuMjEyNSAxMTAuNjUgNTYuNTg3OEMxMTAuMjg3IDU3LjE2MzggMTA4LjczOCA1OS43MDQ3IDEwOS4zODYgNTguOTIwNkMxMTYuNTg0IDUwLjIwNTMgMTI5Ljg1NiA0My40NTk3IDEzOS41MzUgMzcuNjc3NkMxNDkuNzEzIDMxLjU5NzYgMTYwLjMxNCAyNi4yMjk1IDE3MC43MzkgMjAuNTU0MUMxNzIuNTMgMTkuNTc5NCAxNzUuODMxIDE3Ljg1NDMgMTc3LjAxMSAxNi4xODY0QzE3Ny44MjUgMTUuMDM3NiAxNzQuOTQ2IDE4LjE0OTMgMTczLjg0OSAxOS4wNjUxQzE2Ny41MzggMjQuMzMyOCAxNjEuMzk4IDI5LjcxNjEgMTU1LjI0MiAzNS4xNDYzQzE0Ny45OTMgNDEuNTQxMSAxMzIuODk0IDUzLjcwOSAxMzIuODk0IDUzLjcwOUMxMzIuODk0IDUzLjcwOSAxNDcuODI3IDQ0LjY3NjQgMTU1LjgyMyA0MS4xMDIyQzE3MC4wNzQgMzQuNzMxMiAxODUuNTA3IDI4Ljk3MDQgMTk4Ljk5MiAyMS4yNDg5QzIwMC4xODcgMjAuNTY0MiAyMDMuMjQ5IDE3LjgzNTUgMjAyLjI1OSAxOC43NjczQzE5OS45MDUgMjAuOTg0MiAxOTcuNTc0IDIzLjIyNDkgMTk1LjE0NCAyNS4zNjg1QzE4NC40ODEgMzQuNzcxNCAxNzEuOTE3IDQzLjgyNDIgMTYzLjUxOCA1NS4yNDc3QzE2My4wODYgNTUuODM1NyAxNzcuMDY2IDQ5LjgyNTYgMTc4LjMzIDQ5LjI0MjFDMTk4LjYyNiAzOS44NjI5IDIyMC4yMDEgMzIuNzI4NyAyNDEuNTI4IDI1LjcxNkMyNDQuNTI5IDI0LjcyOSAyNDkuOTk1IDIxLjQ5NjUgMjQ0Ljk1NCAyNS43MTZDMjQwLjE1NiAyOS43MzE3IDIyNS4zMDIgNTQuNzA2NyAyMjAuNzA4IDU4LjkyMDZDMjEzLjUwOCA2NS41MjM4IDI4My4zMjcgMjguMjk2OSAyOTMuNzYzIDIzLjgyOTgiIHN0cm9rZT0iI0ZGRjNBQiIgc3Ryb2tlLXdpZHRoPSIxMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=') no-repeat left top / contain;
+      z-index: -1;
+      pointer-events: none;
     }
     .summary-subline { font-size: 16px; color: rgba(0,0,0,.6); line-height: 1.65; }
 
-    .boost-section { margin-bottom: 28px; }
+    .boost-section { margin-bottom: 40px; }
     .boost-heading {
       font-family: "Ubuntu", sans-serif;
       font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 14px;
     }
     .boost-list { display: flex; flex-direction: column; gap: 10px; }
     .boost-item {
-      display: flex; align-items: flex-start; gap: 16px;
+      display: flex; align-items: center; gap: 16px;
       padding: 16px 16px;
       background: #fff;
-      border-left: 4px solid var(--blue);
     }
-    .boost-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .boost-icon {
+      width: 48px; height: 48px; min-width: 48px;
+      background: #002099;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .boost-icon .material-symbols-outlined {
+      font-size: 24px;
+      color: #86FFB4;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
     .boost-body { flex: 1; }
     .boost-body p { font-size: 14px; color: rgba(0,0,0,.82); line-height: 1.5; }
     .boost-delta {
@@ -490,7 +514,7 @@
       font-family: "Ubuntu", sans-serif;
       font-size: 17px; margin-bottom: 4px;
     }
-    .summary-cta-copy p { font-size: 14px; color: #fff; line-height: 1.5; }
+    .summary-cta-copy p { font-size: 16px; color: #fff; line-height: 1.5; }
     .btn-cta {
       background: var(--green); color: rgba(0,0,0,.87);
       border: none; border-radius: 48px;
@@ -553,7 +577,9 @@
       .gauge-wrap { align-self: center; }
 
       /* Summary CTA stacks */
-      .summary-cta { flex-direction: column; gap: 16px; }
+      .summary-cta { flex-direction: column; gap: 24px; padding: 32px; }
+      .summary-cta-copy strong { margin-bottom: 16px; display: block; text-align: center; }
+      .summary-cta-copy p { text-align: center; }
       .btn-cta { width: 100%; }
       .summary-cta-copy { width: 100%; }
     }
@@ -673,7 +699,7 @@
       flex-shrink: 0;
     }
 
-    .summary-headline { font-size: 32px; }
+    .summary-headline { font-size: 40px; }
     .boost-heading { font-size: 24px; }
     .summary-cta-copy strong { font-size: 24px; }
   </style>
@@ -890,8 +916,6 @@
       </div>
       <div class="main-inner">
 
-        <div class="earned-badge" id="earnedBadge">💶 &nbsp;<span id="badgeText">75 points collected</span></div>
-
         <div class="summary-hero">
           <div class="gauge-wrap">
             <svg class="gauge-svg" viewBox="0 0 168 168">
@@ -904,7 +928,7 @@
             </div>
           </div>
           <div class="summary-text">
-            <h2 class="summary-headline">Your preliminary success rate: <span id="summaryPctText" style="color:#005EFF">75%</span></h2>
+            <h2 class="summary-headline">Your preliminary success rate: <span id="summaryPctText" style="color:#005EFF">78%</span></h2>
             <p class="summary-subline">Based on your answers so far, we assess your chances of a severance payment as <strong>good</strong>. With a few more details we can sharpen this estimate.</p>
           </div>
         </div>
@@ -913,24 +937,24 @@
           <p class="boost-heading">🚀 How to increase your success rate further</p>
           <div class="boost-list">
             <div class="boost-item">
-              <span class="boost-icon">📄</span>
+              <div class="boost-icon"><span class="material-symbols-outlined">event</span></div>
               <div class="boost-body">
                 <p><strong>Deadline for unfair dismissal claim</strong> — Let us know whether you can still meet the 3-week filing deadline.</p>
                 <span class="boost-delta">+8% success rate</span>
               </div>
             </div>
             <div class="boost-item">
-              <span class="boost-icon">🏢</span>
+              <div class="boost-icon"><span class="material-symbols-outlined">handshake</span></div>
               <div class="boost-body">
                 <p><strong>Works council present?</strong> — A works council significantly strengthens your position.</p>
-                <span class="boost-delta">+6% success rate</span>
+                <span class="boost-delta">+5% success rate</span>
               </div>
             </div>
             <div class="boost-item">
-              <span class="boost-icon">📅</span>
+              <div class="boost-icon"><span class="material-symbols-outlined">event</span></div>
               <div class="boost-body">
                 <p><strong>Length of employment</strong> — The longer your tenure, the higher the potential severance payment.</p>
-                <span class="boost-delta">+5% success rate</span>
+                <span class="boost-delta">+3% success rate</span>
               </div>
             </div>
           </div>
@@ -1129,7 +1153,7 @@ function go(from) {
 
 /* ── Summary animations ── */
 function initSummary(totalPts) {
-  const SUCCESS = 75;
+  const SUCCESS = totalPts;
   const C = 2 * Math.PI * 65;
 
   const fill = document.getElementById('gaugeFill');
@@ -1149,10 +1173,7 @@ function initSummary(totalPts) {
   };
   setTimeout(tick, 250);
 
-  const badge = document.getElementById('earnedBadge');
-  document.getElementById('badgeText').textContent = '75 points collected';
-  badge.classList.remove('show');
-  setTimeout(() => badge.classList.add('show'), 200);
+  document.getElementById('summaryPctText').textContent = totalPts + '%';
 
   burst();
   syncStrength(totalPts);
