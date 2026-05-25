@@ -480,6 +480,13 @@
       padding: 16px 16px;
       background: #fff;
       border-radius: 8px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .boost-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .boost-icon {
       width: 48px; height: 48px; min-width: 48px;
@@ -1179,6 +1186,62 @@ function initSummary(totalPts) {
 
   burst();
   syncStrength(totalPts);
+
+  // Stagger-fade boost items in, then count up each delta
+  const boostItems = document.querySelectorAll('#page4 .boost-item');
+  const deltas = [8, 5, 3]; // must match HTML order
+
+  // Reset all items so animation replays on re-entry
+  boostItems.forEach(function(item) {
+    item.classList.remove('visible');
+    const pill = item.querySelector('.boost-delta');
+    if (pill) pill.textContent = '+0% success rate';
+  });
+
+  function animateBoostItem(item, i, fadeIn) {
+    if (fadeIn) item.classList.add('visible');
+    const pill = item.querySelector('.boost-delta');
+    const target = deltas[i];
+    let cur = 0;
+    const step = function() {
+      cur++;
+      pill.textContent = '+' + cur + '% success rate';
+      if (cur < target) setTimeout(step, 120);
+    };
+    setTimeout(step, 300);
+  }
+
+  if (window.innerWidth <= 768) {
+    // Mobile: trigger each item when it scrolls into view (window scroll)
+    const animated = [false, false, false];
+    function checkBoostVisibility() {
+      let allDone = true;
+      boostItems.forEach(function(item, i) {
+        if (animated[i]) return;
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          animated[i] = true;
+          animateBoostItem(item, i, true);
+        } else {
+          allDone = false;
+        }
+      });
+      if (allDone) {
+        window.removeEventListener('scroll', checkBoostVisibility);
+      }
+    }
+    // Small delay after page transition, then check + hook scroll
+    setTimeout(function() {
+      checkBoostVisibility();
+      window.addEventListener('scroll', checkBoostVisibility, { passive: true });
+    }, 600);
+  } else {
+    // Desktop: show all items immediately, then stagger only the count-up
+    boostItems.forEach(function(item) { item.classList.add('visible'); });
+    boostItems.forEach(function(item, i) {
+      setTimeout(function() { animateBoostItem(item, i, false); }, 800 + i * 500);
+    });
+  }
 }
 
 /* ── Confetti ── */
