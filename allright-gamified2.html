@@ -1590,7 +1590,7 @@ function burst(targetId) {
       'height:' + size + 'px',
       'background:' + cols[Math.floor(Math.random()*cols.length)],
       'border-radius:' + (Math.random()>.45 ? '50%' : '2px'),
-      'animation:confettiFall ' + (1.4+Math.random()*2.2) + 's ' + (Math.random()*.7) + 's ease-in forwards'
+      'animation:confettiFall ' + (0.7+Math.random()*0.8) + 's ' + (Math.random()*.25) + 's ease-in forwards'
     ].join(';');
     box.appendChild(d);
   }
