@@ -286,7 +286,7 @@
     .btn-weiter.ready:active { transform: scale(.97); }
     .btn-green.ready {
       background: #41FF8E;
-      color: #002099;
+      color: #000;
       box-shadow: 0 4px 18px rgba(65,255,142,.5);
       font-size: 17px;
     }
@@ -945,7 +945,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to max your chances of a payout</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to improve your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page1" style="width:3%"></div></div>
@@ -1003,7 +1003,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to max your chances of a payout</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to improve your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page2" style="width:25%"></div></div>
@@ -1058,7 +1058,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to max your chances of a payout</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to improve your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page3" style="width:50%"></div></div>
@@ -1097,6 +1097,7 @@
      PAGE C — Contact Details
 ─────────────────────────────────────────────────────── -->
 <div class="page" id="page_contact">
+  <div class="confetti-layer" id="confetti-contact"></div>
   <header class="page-header">
     <a href="#" class="ph-logo"><img src="https://www.allright.de/arbeitsrecht/check/images/logos/allright/allright-logo-dark.min.svg" alt="Allright"/></a>
     <div class="ph-tp">
@@ -1112,7 +1113,7 @@
       <div class="progress-area">
         <div class="progress-header">
           <span class="progress-step-label">Check your chances of payout</span>
-          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to max your chances of a payout</span></div>
+          <div class="tooltip-wrap"><span class="tooltip-icon">i</span><span class="tooltip-bubble">Reach 75%+ to improve your chances of a payout</span></div>
         </div>
         <div class="progress-row">
           <div class="progress-track"><div class="progress-fill" id="pf_page_contact" style="width:78%"></div></div>
@@ -1463,7 +1464,10 @@ function go(from) {
     }
   }
   if (from === 3) {
-    setTimeout(() => showPage('page_contact'), 480);
+    setTimeout(() => {
+      showPage('page_contact');
+      setTimeout(() => burst('confetti-contact'), 200);
+    }, 480);
   } else {
     setTimeout(() => showPage('page' + (from + 1)), 480);
   }
@@ -1569,10 +1573,12 @@ function initSummary(totalPts) {
 }
 
 /* ── Confetti ── */
-function burst() {
-  const box = document.getElementById('confetti');
+function burst(targetId) {
+  const box = document.getElementById(targetId || 'confetti');
   box.innerHTML = '';
-  const cols = ['#002099','#4c6ef5','#a5b4fc','#86ffb4','#41FF8E','#ffd700','#ff6b6b'];
+  const cols = targetId === 'confetti-contact'
+    ? ['#002099','#005EEE','#02FF68','#FFE359','#28A228']
+    : ['#002099','#4c6ef5','#a5b4fc','#86ffb4','#41FF8E','#ffd700','#ff6b6b'];
   for (let i = 0; i < 50; i++) {
     const d = document.createElement('div');
     d.className = 'cdot';
